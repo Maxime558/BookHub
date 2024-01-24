@@ -67,4 +67,4 @@ Auteur :
 [Maxime558](https://github.com/Maxime558)
 
 Licence
-Ce projet est sous licence [MIT](LICENSE)
+Ce projet est sous licence [Creative Commons](LICENCE)
