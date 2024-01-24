@@ -63,8 +63,8 @@ Assurez-vous de configurer correctement votre base de données dans le fichier .
 
 - Si vous souhaitez contribuer à ce projet, veuillez ouvrir une issue ou soumettre une demande de tirage avec vos modifications.
 
-Auteur :
-[Maxime558](https://github.com/Maxime558)
+## Auteur :
+- [Maxime558](https://github.com/Maxime558)
 
-Licence
+## Licence :
 Ce projet est sous licence [Creative Commons](LICENCE)
