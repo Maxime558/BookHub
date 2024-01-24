@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}"/>
+		{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/css/nav-profil.css') }}">
+		{% endblock %}
+		{% block javascripts %}
+			<script src="{{ asset('assets/js/profil.js') }}" defer></script>
+			<script src="{{ asset('assets/js/burgermenu.js') }}" defer></script>
+		{% endblock %}
+	</head>
+	<body>
+		<header id="Header">
+			<div class="header-container">
+				<nav class="navbar">
+					<div class="navlinks">
+						<ul>
+							<li><ahref="{{path('app_home')}}">Home</a></li>
+						</ul>
+					</div>
+					<img src="{{ asset('assets/images/icons/menu-btn.png') }}" alt="menu" class="MENU">
+				</nav>
+				<div class="profile-container">
+					{% if app.user is not null and app.user.imageprofil is not null %}
+						<img id="profile-image" src="{{ asset('uploads/profile_images/' ~ app.user.imageprofil) }}" alt="Profil" class="profile-image">
+					{% else %}
+						<img id="profile-image" src="{{ asset('assets/images/icons/defaultprofile.png') }}" alt="Image par défaut" class="profile-image">
+					{% endif %}
+					<div class="subnav">
+						{% if app.user is not null and app.user.prenom is not empty %}
+							<span class="active">{{ app.user.prenom }}</span>
+						{% endif %}
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							{% if is_granted('ROLE_ADMIN') %}
+								<a class="active" href="{{ path('admin') }}">Admin</a>
+							{% endif %}
+							<a class="active" href="{{ path('app_logout') }}">Logout</a>
+						{% else %}
+							<a class="active" href="{{ path('app_login') }}">Login</a>
+							<a class="active" href="{{ path('app_register') }}">Register</a>
+						{% endif %}
+					</div>
+				</div>
+			</header>
+			<main>
+				{% block body %}{% endblock %}
+			</main>
+			<footer>
+				<div>
+					<p>© 2024, Tous droits réservés.</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html></body></html>

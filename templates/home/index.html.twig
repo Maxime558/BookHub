@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/css/card.css') }}">
+{% endblock %}
+
+
+{% block body %}
+	<h2 class="text-center">Actuellement nous avons
+		{{ livres.getTotalItemCount }}
+		livres dans notre catalogue</h2>
+	<section class="livre">
+		{% for livre in livres %}
+			<div class="card">
+				<img src="{{ asset('uploads/livres_images/' ~ livre.image) }}" class="card-img-top" alt="{{ livre.titre }}">
+				<div class="card-body">
+					<h3 class="card-title">{{ livre.titre }}</h5>
+					<p class="card-text">Editeur :
+						{{ livre.editeur }}</p>
+					<p class="card-text">Auteur :
+						{{ livre.auteur }}</p>
+					<p class="card-text">ISBN :
+						{{ livre.isbn }}</p>
+					<p class="card-text">Genres :
+						{% for genre in livre.genre %}
+							<span class="badge">{{ genre.nom }}</span>
+						{% endfor %}
+					</p>
+					{% if not livre.isEmprunte() %}
+						<p class="enprunter enprunter2" onclick="document.getElementById('lienEmprunter{{ livre.id }}').click()">
+							<a id="lienEmprunter{{ livre.id }}" href="{{ path('emprunter_livre', {'id': livre.id}) }}">Emprunter</a>
+						</p>
+					{% elseif livre.getEmpruntePar() == app.user %}
+						<p class="enprunter rendre" onclick="document.querySelector('.rendre-livre-btn', this).click()">
+							<a id="lienRendre{{ livre.id }}" href="{{ path('rendre_livre', {'id': livre.id}) }}" class="rendre-livre-btn">
+								Rendre le livre d'ici le
+								{{ livre.getDateRendu()|date('d/m/Y') }}
+							</a>
+						</p>
+					{% else %}
+						<p class="text">Livre déjà emprunté</p>
+					{% endif %}
+
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+	<footer>
+		<div class="container">
+			{{ knp_pagination_render(livres) }}
+		</div>
+	</footer>
+{% endblock %}
