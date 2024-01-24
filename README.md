@@ -1,6 +1,6 @@
-# Nom de Votre Projet
+# BookHub
 
-## Description
+## Description :
 
 Ce projet est une application web développée avec Symfony permettant de gérer un catalogue de livres. Les fonctionnalités principales incluent l'affichage des livres, l'emprunt de livres par les utilisateurs, et la gestion des dates de rendu.
 
@@ -103,6 +103,8 @@ php bin/console doctrine:fixtures:load --append
 
 - Assurez-vous de composer les commandes avec le chemin correct vers la console Symfony (bin/console) selon la structure de votre projet.
 
+- ⚠️ Ne suprimez pas les images `image1.jpg` jusqu'a l'image `image15.jpg.` si vous voulez utiliser les fixtures pour generer des livres. Ils sont utilisés dans les fixtures pour les livres pour generer des images aleatoires. ⚠️
+
 ## Screenshots
 
 ## La page d'accueil
@@ -132,9 +134,12 @@ php bin/console doctrine:fixtures:load --append
 ![Capture d'écran](screenshots/screenshot4.png) 
 ![Capture d'écran](screenshots/screenshot7.png)
 
+## Participez à ce projet :
+
+Toute contribution est bienvenue. Vous pouvez ouvrir une issue ou soumettre un pull request avec vos modifications. 👍
 
 ## Auteur :
-- [Maxime558](https://github.com/Maxime558)
+- 🚀[Maxime558](https://github.com/Maxime558)🚀
 
 ## Licence :
-Ce projet est sous licence [Creative Commons](LICENCE)
+Ce projet est sous licence [Creative Commons](LICENCE)📝 
